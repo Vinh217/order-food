@@ -38,7 +38,6 @@ export default function InfoProductComponent({ productItem, category }) {
     const value = Number(e.target.value);
     setQty(value);
     setValueRadio(e.target.value);
-    // setCurrentRadioValue(value);
   } 
   return (
     <div>
@@ -60,9 +59,10 @@ export default function InfoProductComponent({ productItem, category }) {
           <form className="flex flex-col gap-4" >
             {radiobtn?.map((e,i) =>(
                 <label htmlFor={e.id} className="relative pl-10 text-sm cursor-pointer" >
-                  <input type="radio" name="options" value={e.value} className="cursor-pointer hidden" id={e.id} onChange={handleRadioChange}/>
+                  <input type="radio" name="options" value={e.value} className="cursor-pointer hidden" id={e.id} 
+                    checked={qty.toString() === e.value}  onChange={handleRadioChange}/>
                   <span className="absolute w-5 h-5 rounded-full top-0 left-3 border-3 border-red-500"></span>
-                  <span className={valueRadio === e.value || qty.toString() === e.value ? "w-3 h-3 rounded-full bg-red-500 absolute top-1 left-4": ""}></span>
+                  <span className={qty.toString() === e.value? "w-3 h-3 rounded-full bg-red-500 absolute top-1 left-4": ""}></span>
                   {e.label}
                 </label>
             ) )}

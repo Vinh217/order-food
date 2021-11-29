@@ -9,14 +9,14 @@ export default function HowWorkComponent() {
           <h2 className="text-3xl font-bold">How it work</h2>
         </div>
         <div className="mt-12 px-12">
-          <div className="container grid grid-cols-1 xl:grid-cols-4 sm:grid-cols-2 justify-items-center items-center gap-y-4">
+          <div className="container grid grid-cols-1 xl:grid-cols-4 sm:grid-cols-2 justify-items-center items-center gap-6">
             <div className="relative">
                 <img src="/static/media/step-1.7975394a.jpg" alt="step-1" className="border-8 rounded-full border-white shadow-2xl" />
               <span className="rounded-full absolute top-0 right-0 border-4 bg-red-500 text-white border-white shadow-2xl w-14 h-14 text-center uppercase text-xs pt-2">
                 01 
                 step
               </span>
-              <div className="absolute top-1/2 -right-24 bg-step-1 h-12 w-24 bg-no-repeat hidden xl:block">
+              <div className="absolute top-1/2 left-[175px] bg-step-1 h-12 w-24 bg-no-repeat hidden xl:block">
                 {/* <img src="/static/media/arrow-1.e50b7ddf.png" alt="arrow" /> */}
               </div>
 
@@ -27,7 +27,7 @@ export default function HowWorkComponent() {
                 02
                 step
               </span>
-              <div className="absolute top-1/2 -right-24 bg-step-2 h-12 w-24 bg-no-repeat hidden xl:block">
+              <div className="absolute top-1/2 left-[175px]  bg-step-2 h-12 w-24 bg-no-repeat hidden xl:block">
                 {/* <img src="/static/media/arrow-1.e50b7ddf.png" alt="arrow" /> */}
               </div>
 
@@ -38,7 +38,7 @@ export default function HowWorkComponent() {
                 03
                 step
               </span>
-              <div className="absolute top-1/2 -right-24 bg-step-3 h-12 w-24 bg-no-repeat hidden xl:block">
+              <div className="absolute top-1/2 left-[175px]  bg-step-3 h-12 w-24 bg-no-repeat hidden xl:block">
               </div>
 
             </div>

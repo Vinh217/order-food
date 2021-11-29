@@ -18,7 +18,7 @@ export default function Sidebar() {
   // const location = new URLSearchParams(url.search.slice(1));
 
   const parse = queryString.parse(location.search);
-
+  //selector get value cart from store
   const { showMiniCart, cartItems } = useSelector(state => state.cart);
   const cartTotal = useSelector(cartTotalSelector);
   const handleClick = () => {

@@ -1,13 +1,19 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useState } from 'react'
+import { Fragment, useCallback, useEffect, useState } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { HomeIcon, MenuIcon, XIcon } from '@heroicons/react/solid'
-import {ShoppingCartIcon} from '@heroicons/react/solid'
+import { ShoppingCartIcon } from '@heroicons/react/solid'
 import { Link } from 'react-router-dom'
 import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { showMiniCart } from '../../../redux/slice/CartSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import {cartItemsCountSelector} from '../../../redux/slice/selector';
+import { cartItemsCountSelector } from '../../../redux/slice/selector';
+import { auth, provider } from '../../../firebase';
+import { signInWithPopup, signOut } from '@firebase/auth'
+import { UserCircleIcon } from '@heroicons/react/solid';
+import { useNavigate } from 'react-router'
+import {setUserLoginDetails, selectUserName,
+  selectUserPhoto,setSignOutState} from '../../../redux/slice/UserSlice';
 
 const navigation = [
   { name: 'Page', to: '/', current: true },
@@ -22,26 +28,72 @@ function classNames(...classes) {
 
 
 export default function Header() {
-  const [navbar,setNavBar] = useState(false);
+  const [navbar, setNavBar] = useState(false);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
+  const userName = useSelector(selectUserName);
+  const userPhoto = useSelector(selectUserPhoto);
   const cartItemCount = useSelector(cartItemsCountSelector);
-  const changColorNavBar =() => {
-    if(window.scrollY > 10 ) {
+  const changColorNavBar = () => {
+    if (window.scrollY > 10) {
       setNavBar(true);
     }
-    else { 
+    else {
       setNavBar(false);
-    } 
+    }
   }
-  window.addEventListener('scroll',changColorNavBar);
+  window.addEventListener('scroll', changColorNavBar);
+
+  useEffect(() => {
+    auth.onAuthStateChanged(async (user) => {
+      if (user) {
+        setUser(user)
+        navigate('/')
+      }
+    })
+  }, [userName]);
+
+  const setUser = (user) => {
+    dispatch(
+      setUserLoginDetails({
+        name: user.displayName,
+        email: user.email,
+        photo: user.photoURL,
+      })
+    )
+  };
+
+  const handleAuth = () => {
+		if(!userName) {
+      signInWithPopup(auth, provider)
+			.then((result) => {
+				setUser(result.user);
+			})
+			.catch((error) => {
+				alert(error.message);
+			});
+		}
+		else if(userName) {
+      signOut(auth)
+			.then(() => {
+				dispatch(setSignOutState());
+				navigate('/');
+			})
+			.catch((error) => {
+				alert(error.message);
+			})
+		}
+	};
 
   const handleClick = () => {
     const action = showMiniCart();
     dispatch(action);
   }
 
+
+
   return (
-    <Disclosure as="nav" className ={navbar ? "bg-black bg-opacity-80 fixed top-0 w-full z-50" : "bg-transparent fixed top-0 w-full z-50"}>
+    <Disclosure as="nav" className={navbar ? "bg-black bg-opacity-80 fixed top-0 w-full z-50" : "bg-transparent fixed top-0 w-full z-50"}>
       {({ open }) => (
         <>
           <div className="container mx-auto">
@@ -73,23 +125,23 @@ export default function Header() {
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
-                      <HomeIcon className="w-4 h-4"/>
+                      <HomeIcon className="w-4 h-4" />
                       <span className="text-sm">Pages</span>
                     </Link>
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
-                      <HomeIcon className="w-4 h-4"/>
+                      <HomeIcon className="w-4 h-4" />
                       <span className="text-sm">Order Online</span>
                     </Link>
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
-                      <HomeIcon className="w-4 h-4"/>
+                      <HomeIcon className="w-4 h-4" />
                       <span className="text-sm">News</span>
-                    </Link>          
+                    </Link>
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
-                      <HomeIcon className="w-4 h-4"/>
+                      <HomeIcon className="w-4 h-4" />
                       <span className="text-sm">Store Location</span>
                     </Link>
-                    
-                    
+
+
                   </div>
                 </div>
               </div>
@@ -105,14 +157,21 @@ export default function Header() {
                 {/* Profile dropdown */}
                 <Menu as="div" className=" relative ml-12">
                   <div>
-                    <Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
+                    {!userName ? 
+                      <button className=" flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" onClick={handleAuth}>
+                        <UserCircleIcon className="w-10 h-10 text-gray-300" />
+                        <span className="text-white font-bold my-auto">Sign In</span>
+                      </button>
+                      
+                      :<Menu.Button className="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                       <span className="sr-only">Open user menu</span>
-                      <LazyLoadImage
+                      <img
                         className="h-8 w-8 rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        alt=""
+                        src={userPhoto}
+                        alt={userName}
                       />
                     </Menu.Button>
+                    }
                   </div>
                   <Transition
                     as={Fragment}
@@ -140,9 +199,9 @@ export default function Header() {
                       </Menu.Item>
                       <Menu.Item>
                         {({ active }) => (
-                          <Link to="#" className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')} >
+                          <div className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700 cursor-pointer')} onClick={handleAuth}>
                             Sign out
-                          </Link>
+                          </div>
                         )}
                       </Menu.Item>
                     </Menu.Items>
