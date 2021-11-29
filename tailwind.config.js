@@ -27,13 +27,13 @@ module.exports = {
       },
     },
     backgroundImage: {
-      'banner-one': "url('http://localhost:3000/static/media/banner-nd.675b194a.jpg')",
-      'banner-two': "url('http://localhost:3000/static/media/banner-rd.5b0810a4.jpg')",
-      'banner-three': "url('http://localhost:3000/static/media/banner-st.57953e4d.jpg')",
-      'banner-product': "url('http://localhost:3000/static/media/banner.10879cd6.jpg')",
-      'step-1': "url('http://localhost:3000/static/media/arrow-1.e50b7ddf.png')",
-      'step-2': "url('http://localhost:3000/static/media/arrow-2.7a8b4722.png')",
-      'step-3': "url('http://localhost:3000/static/media/arrow-3.efc3debf.png')",
+      'banner-one': "url('https://order-food-bvrta2uf6-vinh217.vercel.app/static/media/banner-nd.675b194a.jpg')",
+      'banner-two': "url('https://order-food-bvrta2uf6-vinh217.vercel.app/static/media/banner-rd.5b0810a4.jpg')",
+      'banner-three': "url('https://order-food-bvrta2uf6-vinh217.vercel.app/static/media/banner-st.57953e4d.jpg')",
+      'banner-product': "url('https://order-food-bvrta2uf6-vinh217.vercel.app/static/media/banner.10879cd6.jpg')",
+      'step-1': "url('https://order-food-bvrta2uf6-vinh217.vercel.app/static/media/arrow-1.e50b7ddf.png')",
+      'step-2': "url('https://order-food-bvrta2uf6-vinh217.vercel.app/static/media/arrow-2.7a8b4722.png')",
+      'step-3': "url('https://order-food-bvrta2uf6-vinh217.vercel.app/static/media/arrow-3.efc3debf.png')",
     },
 
     fontFamily: {
