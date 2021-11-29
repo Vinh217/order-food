@@ -134,12 +134,19 @@ export default function Order() {
     }
     selected && setFilter(newFilters);
   }
-
+  const handleRateClick = (value) => {
+    const newFilters = {
+      ...filter,
+      _page: 1,
+      rate_like: value,
+    }
+    value && setFilter(newFilters);
+  }
   return (
     <>
       <BannerProductComponent category={category} />
       <div className="grid grid-cols-[1fr,4fr] gap-4 container mx-auto mt-20">
-        <FilterProductComponent handleOnClick={handleOnClick} handlePriceFilter={handlePriceFilter} />
+        <FilterProductComponent handleOnClick={handleOnClick} handlePriceFilter={handlePriceFilter} handleRateClick={handleRateClick} />
         <SearchProductComponent handleSubmit={handleSubmit} />
         {isLoading ?
           <ListProductComponent listproduct={listproduct} handlePageChange={handlePageChange} paginations={paginations} forcePage={filter._page} />

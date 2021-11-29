@@ -1,5 +1,6 @@
 import { CalendarIcon, HeartIcon, TagIcon, TruckIcon } from '@heroicons/react/outline';
 import { MinusCircleIcon, PlusCircleIcon, ShoppingCartIcon, StarIcon } from '@heroicons/react/solid';
+import { StarIcon as StarOutLine} from '@heroicons/react/outline';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slice/CartSlice';
@@ -46,7 +47,7 @@ export default function InfoProductComponent({ productItem, category }) {
           <h2 className="font-bold text-3xl leading-3">{productItem.name}</h2>
           <div className="flex">
             { arrRate.map(() =>  <StarIcon className="w-4 h-4 text-yellow-400" />) }
-            {productItem.rate < 5 && new Array(5-productItem.rate).fill(0).map(() =>  <StarIcon className="w-4 h-4 text-gray-500 stroke-0" />)}
+            {productItem.rate < 5 && new Array(5-productItem.rate).fill(0).map(() =>  <StarOutLine className="w-4 h-4 text-yellow-500" />)}
           </div>
           <div className="text-red-500 text-3xl font-bold">{Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(productItem.price)}</div>
           <div className="flex justify-between gap-6 items-center">
