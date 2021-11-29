@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { cartItemsCountSelector } from '../../../redux/slice/selector';
 import { auth, provider } from '../../../firebase';
 import { signInWithPopup, signOut } from '@firebase/auth'
-import { UserCircleIcon } from '@heroicons/react/solid';
+import { UserCircleIcon,CakeIcon,ClipboardListIcon,LocationMarkerIcon } from '@heroicons/react/solid';
 import { useNavigate } from 'react-router'
 import {setUserLoginDetails, selectUserName,
   selectUserPhoto,setSignOutState} from '../../../redux/slice/UserSlice';
@@ -93,7 +93,7 @@ export default function Header() {
 
 
   return (
-    <Disclosure as="nav" className={navbar ? "bg-black bg-opacity-80 fixed top-0 w-full z-50" : "bg-transparent fixed top-0 w-full z-50"}>
+    <Disclosure as="nav" className={navbar ? "bg-black bg-opacity-80 fixed top-0 w-full z-50" : "md:bg-transparent bg-black bg-opacity-80 fixed top-0 w-full z-50"}>
       {({ open }) => (
         <>
           <div className="container mx-auto">
@@ -123,21 +123,21 @@ export default function Header() {
                   />
                 </Link>
                 <div className="hidden sm:block sm:ml-6">
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-4 gap-4">
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
                       <HomeIcon className="w-4 h-4" />
                       <span className="text-sm">Pages</span>
                     </Link>
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
-                      <HomeIcon className="w-4 h-4" />
+                      <CakeIcon className="w-4 h-4" />
                       <span className="text-sm">Order Online</span>
                     </Link>
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
-                      <HomeIcon className="w-4 h-4" />
+                      <ClipboardListIcon className="w-4 h-4" />
                       <span className="text-sm">News</span>
                     </Link>
                     <Link to="order" className="text-white mt-1 flex items-center gap-2">
-                      <HomeIcon className="w-4 h-4" />
+                      <LocationMarkerIcon className="w-4 h-4" />
                       <span className="text-sm">Store Location</span>
                     </Link>
 

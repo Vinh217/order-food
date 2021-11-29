@@ -1,6 +1,5 @@
-import { CalendarIcon, HeartIcon, TagIcon, TruckIcon } from '@heroicons/react/outline';
+import { CalendarIcon, HeartIcon, StarIcon as StarOutLine, TagIcon, TruckIcon } from '@heroicons/react/outline';
 import { MinusCircleIcon, PlusCircleIcon, ShoppingCartIcon, StarIcon } from '@heroicons/react/solid';
-import { StarIcon as StarOutLine} from '@heroicons/react/outline';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../redux/slice/CartSlice';

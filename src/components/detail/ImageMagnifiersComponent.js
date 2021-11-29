@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactImageMagnify from 'react-image-magnify';
-import { GlassMagnifier } from "react-image-magnifiers";
 export default function ImageMagnifiersComponent({ fooditem }) {
   const img = fooditem && fooditem.img;
   return (

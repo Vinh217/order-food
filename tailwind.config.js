@@ -15,7 +15,16 @@ module.exports = {
       },
       gridAutoRows: {
         '2fr': 'minmax(0, 2fr)',
-      }
+      },
+      animation: {
+        'ltr-linear-infinite': 'move-img 5s ease-in-out infinite'
+       },
+       keyframes: {
+        'move-img': {
+          '0%':   { 'transform': 'scale(0.9)' },
+          '100%': { 'transform': 'scale(1)'}
+        },
+      },
     },
     container: {
       screens: {
