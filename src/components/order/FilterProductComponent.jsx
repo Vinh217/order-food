@@ -34,7 +34,7 @@ export default function FilterProductComponent({ handleOnClick, handlePriceFilte
   }, [handlePriceFilter]);
 
   return (
-    <nav className="col-span-1 row-span-3">
+    <nav className="col-span-1 row-span-3 md:block hidden">
       <div className="flex flex-col">
         <div>
           <h3 className="border-b-2 pb-2 font-bold text-xl px-4 ">Popular</h3>

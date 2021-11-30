@@ -145,7 +145,7 @@ export default function Order() {
   return (
     <>
       <BannerProductComponent category={category} />
-      <div className="grid grid-cols-[1fr,4fr] gap-4 container mx-auto mt-20">
+      <div className="grid md:grid-cols-[1fr,4fr] grid-cols-1 gap-4 container mx-auto mt-20">
         <FilterProductComponent handleOnClick={handleOnClick} handlePriceFilter={handlePriceFilter} handleRateClick={handleRateClick} />
         <SearchProductComponent handleSubmit={handleSubmit} />
         {isLoading ?

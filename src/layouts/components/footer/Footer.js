@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <section className="w-full mt-20 bg-gray-900">
       <div className="container mx-auto">
-        <div className="flex py-20 w-full justify-between items-center">
+        <div className="flex py-20 w-full justify-between items-center flex-col md:flex-row gap-8">
           <div className="flex justify-between items-center gap-20">
             <div className="flex flex-col gap-4 text-white">
               <span>Sunday</span>
@@ -29,7 +29,7 @@ export default function Footer() {
               <span>10.00-22.00</span>
             </div>
           </div>
-          <div className="self-start">
+          <div className="self-start px-16">
             <div className="flex flex-col text-white gap-4">
               <h2 className="font-bold text-3xl">Address</h2>
               <div className="flex items-center gap-2">

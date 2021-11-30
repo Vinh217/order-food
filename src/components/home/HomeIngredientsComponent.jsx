@@ -54,10 +54,10 @@ export default function HomeIngredientsComponent() {
           </div>
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 container mx-auto">
         <div className="flex justify-center flex-col items-center gap-2">
           <span className="font-pango text-yellow-400 md:text-lg ">Best food</span>
-          <div className="font-bold text-3xl">Super delicious Steak<span className="text-red-500"> Hamburger</span></div>
+          <div className="font-bold md:text-3xl text-2xl">Super delicious Steak<span className="text-red-500"> Hamburger</span></div>
           <span className="text-red-500 text-4xl font-bold">$25.00</span>
           <Link to="order" className="w-28 h-8 rounded-full bg-red-500 text-white font-semibold shadow-2xl text-center pt-1">Order Now</Link>
         </div>

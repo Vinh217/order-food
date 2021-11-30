@@ -15,7 +15,7 @@ export default function ImageMagnifiersComponent({ fooditem }) {
           width: 1200,
           height: 1800
         }
-      }} className="z-50" />}
+      }} className="z-10" />}
       <div className="flex mt-4">
         <img src={img} alt="foodimgage" className="w-24 h-24 object-cover flex-shrink-0 cursor-pointer"/>
       </div>

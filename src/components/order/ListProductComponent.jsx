@@ -16,7 +16,7 @@ export default function ListProductComponent({ listproduct, paginations, handleP
 return (
   <div className="col-span-1 row-span-2">
     {listproduct && listproduct.length ?
-    <div className="grid grid-cols-4 grid-rows-4 gap-y-4 gap-x-2">
+    <div className="grid md:grid-cols-4 grid-cols-2 grid-rows-4 gap-y-4 gap-x-2">
       {listproduct && listproduct?.map((value, index) => (<CardProductComponent itemproduct={value} />))}
     </div> 
     :
